@@ -33,7 +33,7 @@ function Shoppingheader() {
 
     const handleLogout = async () => {
         try {
-            await axios.post("http://localhost:5000/api/logout", {}, { withCredentials: true });
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/logout`, {}, { withCredentials: true });
             await dispatch(logoutUser());
             navigate("/auth/login", { replace: true });
         } catch (error) {

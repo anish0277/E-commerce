@@ -11,7 +11,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
         if(filters?.brand) params.append("brand",filters.brand.join(","))
         if(sortBy)params.append("sortedBy", sortBy)
           
-        const response = await axios.get(`http://localhost:5000/api/shop/products?${params.toString()}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/shop/products?${params.toString()}`);
         console.log("Fetched Products:", response.data.products); 
         return response.data.products;
       } catch (error) {
@@ -23,7 +23,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
     "Products/getProductDetails",
     async (id,{ rejectWithValue }) => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/shop/products/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/shop/products/${id}`);
         console.log("Fetched Products:", response.data.products); 
         return response.data.product;
       } catch (error) {

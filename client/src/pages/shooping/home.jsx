@@ -104,7 +104,7 @@ function Home() {
       return;
     }
 
-    const filterKey = ["Men", "Women", "Kids", "Accessories", "Footwear"].includes(item.label)
+    const filterKey = ["men", "women", "kids", "accessories", "footwear"].includes(item.label)
       ? "categories"
       : "brand";
 
@@ -162,11 +162,11 @@ function Home() {
       </p>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-6 mt-8">
         {[
-          { icon: <Shirt className="w-14 h-14 text-blue-500" />, label: "Men" },
-          { icon: <CloudLightning className="w-14 h-14 text-pink-500" />, label: "Women" },
-          { icon: <Baby className="w-14 h-14 text-yellow-500" />, label: "Kids" },
-          { icon: <Watch className="w-14 h-14 text-green-500" />, label: "Accessories" },
-          { icon: <Footprints className="w-14 h-14 text-purple-500" />, label: "Footwear" },
+          { icon: <Shirt className="w-14 h-14 text-blue-500" />, label: "men" },
+          { icon: <CloudLightning className="w-14 h-14 text-pink-500" />, label: "women" },
+          { icon: <Baby className="w-14 h-14 text-yellow-500" />, label: "kids" },
+          { icon: <Watch className="w-14 h-14 text-green-500" />, label: "accessories" },
+          { icon: <Footprints className="w-14 h-14 text-purple-500" />, label: "footwear" },
         ].map((category, index) => (
           <div
             key={index}

@@ -16,7 +16,7 @@ export const findAllProduct = createAsyncThunk(
   "adminProduct/findAllProduct",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://localhost:5000/api/admin/products/all_product");
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/products/all_product`);
       console.log("Fetched Products:", response.data.products); 
       return response.data.products;
     } catch (error) {
@@ -30,7 +30,7 @@ export const addNewProduct = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       console.log(" Sending Data to Backend:", formData);
-      const response = await axios.post("http://localhost:5000/api/admin/products/add", formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/admin/products/add`, formData);
       console.log(" Response from Backend:", response.data);
       return response.data;
     } catch (error) {
@@ -45,7 +45,7 @@ export const updateProduct = createAsyncThunk(
   async ({ id, updatedProduct }, { rejectWithValue }) => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/admin/products/edit/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/products/edit/${id}`,
         updatedProduct
       );
       return response.data;
@@ -59,7 +59,7 @@ export const deleteProduct = createAsyncThunk(
   "adminProduct/deleteProduct",
   async (id, { rejectWithValue }) => {
     try {
-      await axios.delete(`http://localhost:5000/api/admin/products/delete/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/admin/products/delete/${id}`);
       return id;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Error deleting product");

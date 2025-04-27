@@ -26,7 +26,7 @@ const store = configureStore({
 
 export const checkAuth = () => async (dispatch) => {
   try {
-    const data = await apiRequest("http://localhost:5000/api/check-auth");
+    const data = await apiRequest(`${import.meta.env.VITE_API_URL}/api/check-auth`);
     if (data.success) {
       dispatch(
         setUser({

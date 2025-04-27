@@ -10,7 +10,7 @@ export const searchProducts = createAsyncThunk(
   "Products/searchProducts",
   async (keyword, { rejectWithValue}) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/shop/search/${keyword}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/shop/search/${keyword}`);
       console.log("Fetched Products:", response.data);
       return response.data;
     } catch (error) {

@@ -8,7 +8,7 @@ const initialState = {
 
 export const addToCart = createAsyncThunk('cart/addToCart', async ({ UserId, ProductId, quantity }, { dispatch, rejectWithValue }) => {
     try {
-        const response = await axios.post("http://localhost:5000/api/shop/cart/add", { UserId, ProductId, quantity });
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/shop/cart/add`, { UserId, ProductId, quantity });
         console.log("Added to cart:", response.data);
         dispatch(fetchCartItems({ UserId }));  // Fetch updated cart after adding
         return response.data;
@@ -20,7 +20,7 @@ export const addToCart = createAsyncThunk('cart/addToCart', async ({ UserId, Pro
 
 export const fetchCartItems = createAsyncThunk('cart/fetchCartItems', async ({ UserId }, { rejectWithValue }) => {
     try {
-        const response = await axios.get(`http://localhost:5000/api/shop/cart/get/${UserId}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/shop/cart/get/${UserId}`);
         console.log("Fetched Cart items:", response.data);
         return response.data.data;  
     } catch (error) {
@@ -35,7 +35,7 @@ export const deleteToCart = createAsyncThunk(
         try {
             console.log("Deleting cart item:", UserId, ProductId); // Debugging log
 
-            const response = await axios.delete(`http://localhost:5000/api/shop/cart/${UserId}/${ProductId}`);
+            const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/shop/cart/${UserId}/${ProductId}`);
 
             if (response.data?.success) {
                 dispatch(fetchCartItems({ UserId })); // Fetch updated cart after deleting
@@ -51,7 +51,7 @@ export const deleteToCart = createAsyncThunk(
 );
 export const updateToCart = createAsyncThunk('cart/updateToCart', async ({ UserId, ProductId, quantity }, { dispatch, rejectWithValue }) => {
     try {
-        const response = await axios.put("http://localhost:5000/api/shop/cart/update-card", { UserId, ProductId, quantity });
+        const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/shop/cart/update-card`, { UserId, ProductId, quantity });
         dispatch(fetchCartItems({ UserId }));  // Fetch updated cart after updating
         return response.data.data;
     } catch (error) {
