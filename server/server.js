@@ -20,7 +20,7 @@ const port = process.env.PORT || 5000;
 ConnectDb
 
 app.use(cors({
-    origin:process.env.CLIENT_BASE_URL,
+    origin:'e-commerce-l1wk.vercel.app',
     methods:['GET','POST','DELETE','PUT'],
     allowedHeaders:[
         'Content-Type',
