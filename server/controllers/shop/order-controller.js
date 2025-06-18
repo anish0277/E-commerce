@@ -129,32 +129,26 @@ const capturePayment=async(req,res)=>{
         })
     }
 }
-const getAllOrdersByUser=async(req,res)=>{
-  try{
-    const {userId}=req.params;
-    const orders=await Order.find({userId})
+const getAllOrdersByUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const orders = await Order.find({ userId });
     console.log("Orders found:", orders.length);
-
-    if(!orders.length){
-      res.status(404).json({
-        success:false,
-        message:'No orders found for this user',
-      })
-    }
+    
     res.status(200).json({
-      success:true,
-      message:'Orders found successfully',
-      data:orders
-    })
-  }catch(e){
-    console.log(e)
-        res.status(500).json({
-            message:"Error while getting ALL Orders By user ID",
-            success:false
-        })
-
+      success: true,
+      message: orders.length ? 'Orders found successfully' : 'No orders found for this user',
+      data: orders
+    });
+    
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({
+      message: "Error while getting ALL Orders By user ID",
+      success: false
+    });
   }
-}
+};
 const getOrderDetail=async(req,res)=>{
   try{
     const {id}=req.params;
