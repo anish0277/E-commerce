@@ -38,7 +38,7 @@ function Login() {
             
                 alert("Login Successful!");
 
-                // ✅ Navigate based on user role
+                // Navigate based on user role
                 if (data.user.role === "admin") {
                     navigate("/admin/dashboard");  // Redirect admin to admin dashboard
                 } else {
