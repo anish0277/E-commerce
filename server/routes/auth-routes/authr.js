@@ -3,9 +3,9 @@ const { Registeruser, Loginuser, Logoutuser, checkAuth } = require('../../contro
 
 const router = express.Router();
 
-router.post('/register', Registeruser);  // Ensure function exists
-router.post('/login', Loginuser);  // Ensure function exists
-router.post('/logout', Logoutuser);  // Ensure function exists
-router.get('/check-auth', checkAuth);  // Ensure function exists
+router.post('/register', Registeruser);  
+router.post('/login', Loginuser);  
+router.post('/logout', Logoutuser);  
+router.get('/check-auth', checkAuth);  
 
 module.exports = router;
